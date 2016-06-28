@@ -46,7 +46,7 @@ node default {
   
   file { 'motd':
   ensure  => file,
-  path => 'etc/motd',
+  path => '/etc/motd',
   content => 'Today I learned about Puppet Ent!',
   
 }
