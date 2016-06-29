@@ -39,16 +39,17 @@ ini_setting { 'random ordering':
 # specified in the console for that node.
 
 node default {
+  include users
   # This is where you can declare classes for all nodes.
   # Example:
   #   class { 'my_class': }
-  notify { "Hello, my name is ${::hostname}": }
+  #notify { "Hello, my name is ${::hostname}": }
   
-  file { 'motd':
-  ensure  => file,
-  path => '/etc/motd',
-  content => 'Today I learned about Puppet Ent!',
+  #file { 'motd':
+  #ensure  => file,
+  #path => '/etc/motd',
+  #content => 'Today I learned about Puppet Ent!',
   
 }
 
-}
+
