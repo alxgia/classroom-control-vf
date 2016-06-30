@@ -44,16 +44,16 @@ node default {
   # This is where you can declare classes for all nodes.
   # Example:
   #   class { 'my_class': }
-  notify { "Hello, my name is ${::hostname}": }
+  #notify { "Hello, my name is ${::hostname}": }
   
-  file { '/etc/motd':
-  ensure  => file,
-  owner => 'root',
-  group => 'root',
-  mode => '0664',
-  content => "Today I learned what it means to manage a state using Puppet\n",
+  #file { '/etc/motd':
+  #ensure  => file,
+  #owner => 'root',
+  #group => 'root',
+  #mode => '0664',
+  #content => "Today I learned what it means to manage a state using Puppet\n",
     }
-   }
+   
 
 
 
