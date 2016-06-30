@@ -53,9 +53,12 @@ node default {
   #mode => '0664',
   #content => "Today I learned what it means to manage a state using Puppet\n",
     
-    exec { "cowsay 'Welcome to ${::fqdn}!'> /etc/motd":
-    path => '/usr/bin:/usr/local/bin',
-    creates => '/etc/motd',
+    $cowsay_cmd = "/usr/local/bin/cowsay 'Welcome to ${::fqdn}!' > /etc/motd"
+    $cowsay_unless = '/bin/grep -F "Welcome to" /etc/motd'
+  
+    exec { 'cowsay_motd':
+    command => $cowsay_cmd,
+    unless  => $cowsay_unless,
        }
       }
    
