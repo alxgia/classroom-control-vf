@@ -1,12 +1,31 @@
-define users::managed_user ( 
+define users::managed_user (
+  $username = $title,
+  $homedir = "/home/${title}",
   $group = $title,
-){
-user { $title:
-ensure => present, 
+) {
+
+  File {
+    owner => $username,
+    group => $username,
+  }
+
+  user { "user_${title}":
+    ensure => present,
+    name   => $username,
+    home   => $homedir,
+    gid    => $group,
+    expiry => $expiry,
+  }
+
+  file { "home_${title}":
+    ensure => directory,
+    path   => $homedir,
+  }
+
+  file { "sshdir_${title}":
+    ensure => directory,
+    path   => "${homedir}/.ssh",
+  }
 }
-file { "/home/${title}":
-ensure => directory, 
-owner => $title, 
-group => $group,
-} 
-}
+
+
