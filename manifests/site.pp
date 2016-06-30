@@ -46,11 +46,14 @@ node default {
   #   class { 'my_class': }
   notify { "Hello, my name is ${::hostname}": }
   
-  file { 'motd':
+  file { '/etc/motd':
   ensure  => file,
-  path => '/etc/motd',
-  content => 'Today I learned about Puppet Ent!',
-  
-}
+  owner => 'root',
+  group => 'root',
+  mode => '0664',
+  content => "Today I learned what it means to manage a state using Puppet\n",
+    }
+   }
+
 
 
