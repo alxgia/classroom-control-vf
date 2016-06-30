@@ -59,12 +59,9 @@ node default {
     exec { 'cowsay_motd':
     command => $cowsay_cmd,
     unless  => $cowsay_unless,
+      }
     }
     
-    host { 'testing.puppetlabs.vm':
-     ensure => present,
-     ip => '127.0.0.1',
-       }
       }
    
 
