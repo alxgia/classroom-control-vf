@@ -16,6 +16,11 @@ define users::managed_user (
     gid    => $group,
     expiry => $expiry,
   }
+  
+  group { "user_group_${title}":
+    ensure => present,
+    name   => $group,
+  }
 
   file { "home_${title}":
     ensure => directory,
@@ -27,5 +32,3 @@ define users::managed_user (
     path   => "${homedir}/.ssh",
   }
 }
-
-
