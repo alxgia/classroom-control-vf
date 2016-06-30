@@ -48,7 +48,8 @@ node default {
   }
   
   if $::virtual != 'physical' {
-    $vmname {"This is a ${vmname} virtual machine.":}
+    $vmname = capitalize($::virtual)
+    notify {"This is a ${vmname} virtual machine.":}
     }
   
   #file { '/etc/motd':
